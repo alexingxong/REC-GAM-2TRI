@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://scripts/gema.gd" id="1_scr"]
+[ext_resource type="Texture2D" path="res://artes/Coletaveis e Efeitos/Sunnyland items/Sprites/gem/gem-1.png" id="2_g1"]
+[ext_resource type="Texture2D" path="res://artes/Coletaveis e Efeitos/Sunnyland items/Sprites/gem/gem-2.png" id="3_g2"]
+[ext_resource type="Texture2D" path="res://artes/Coletaveis e Efeitos/Sunnyland items/Sprites/gem/gem-3.png" id="4_g3"]
+[ext_resource type="Texture2D" path="res://artes/Coletaveis e Efeitos/Sunnyland items/Sprites/gem/gem-4.png" id="5_g4"]
+[ext_resource type="Texture2D" path="res://artes/Coletaveis e Efeitos/Sunnyland items/Sprites/gem/gem-5.png" id="6_g5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gema"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_g1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_g2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_g3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_g4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_g5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="Circle_gema"]
+radius = 7.0
+
+[node name="Gema" type="Area2D"]
+script = ExtResource("1_scr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_gema")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("Circle_gema")
+
+[connection signal="body_entered" from="." to="." method="_on_area_entered"]

@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cehldju8r0g0w"]
+
+[ext_resource type="Script" uid="uid://budhukih1t87j" path="res://scripts/hud.gd" id="1_scr"]
+
+[node name="HUD" type="CanvasLayer" unique_id=1910385675]
+script = ExtResource("1_scr")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1802739537]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+
+[node name="ScoreLabel" type="Label" parent="MarginContainer" unique_id=2001056821]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 12
+text = "Gemas: 0"
