@@ -1,25 +1,17 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://dcl7cgxgru47v"]
 
 [ext_resource type="Script" uid="uid://cwktvwf3qt0rv" path="res://scripts/player.gd" id="1_scr"]
 [ext_resource type="Texture2D" uid="uid://dio773ks8cmym" path="res://artes/Personagem e Inimigos/Player/Sprites/idle/player-idle-1.png" id="2_idle1"]
 [ext_resource type="Texture2D" uid="uid://d3ys2okmc1e3s" path="res://artes/Personagem e Inimigos/Player/Sprites/idle/player-idle-2.png" id="3_idle2"]
 [ext_resource type="Texture2D" uid="uid://dih47o0ph4gru" path="res://artes/Personagem e Inimigos/Player/Sprites/idle/player-idle-3.png" id="4_idle3"]
 [ext_resource type="Texture2D" uid="uid://c48q7ttk08tja" path="res://artes/Personagem e Inimigos/Player/Sprites/idle/player-idle-4.png" id="5_idle4"]
-[ext_resource type="Texture2D" path="res://artes/Personagem e Inimigos/Player/Sprites/run/player-run-1.png" id="9_run1"]
-[ext_resource type="Texture2D" path="res://artes/Personagem e Inimigos/Player/Sprites/run/player-run-2.png" id="10_run2"]
-[ext_resource type="Texture2D" path="res://artes/Personagem e Inimigos/Player/Sprites/run/player-run-3.png" id="11_run3"]
-[ext_resource type="Texture2D" path="res://artes/Personagem e Inimigos/Player/Sprites/run/player-run-4.png" id="12_run4"]
-[ext_resource type="Texture2D" path="res://artes/Personagem e Inimigos/Player/Sprites/run/player-run-5.png" id="13_run5"]
-[ext_resource type="Texture2D" path="res://artes/Personagem e Inimigos/Player/Sprites/run/player-run-6.png" id="14_run6"]
 [ext_resource type="Texture2D" uid="uid://bxyh1b8406tv" path="res://artes/Coletaveis e Efeitos/Sunnyland FX/Sprites/item-feedback/item-feedback-1.png" id="8_fx"]
-
-[sub_resource type="ParticleProcessMaterial" id="Particles_brilho"]
-direction = Vector3(0, -1, 0)
-spread = 45.0
-initial_velocity_min = 30.0
-initial_velocity_max = 60.0
-scale_min = 0.8
-scale_max = 1.4
+[ext_resource type="Texture2D" uid="uid://dv4bosvltav47" path="res://artes/Personagem e Inimigos/Player/Sprites/run/player-run-1.png" id="9_run1"]
+[ext_resource type="Texture2D" uid="uid://cxn0a1ny7g50q" path="res://artes/Personagem e Inimigos/Player/Sprites/run/player-run-2.png" id="10_run2"]
+[ext_resource type="Texture2D" uid="uid://ogiticsemcbg" path="res://artes/Personagem e Inimigos/Player/Sprites/run/player-run-3.png" id="11_run3"]
+[ext_resource type="Texture2D" uid="uid://cn6t3y1fbdnan" path="res://artes/Personagem e Inimigos/Player/Sprites/run/player-run-4.png" id="12_run4"]
+[ext_resource type="Texture2D" uid="uid://d1idkqlu6216w" path="res://artes/Personagem e Inimigos/Player/Sprites/run/player-run-5.png" id="13_run5"]
+[ext_resource type="Texture2D" uid="uid://ccflwesxgiodv" path="res://artes/Personagem e Inimigos/Player/Sprites/run/player-run-6.png" id="14_run6"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_player"]
 animations = [{
@@ -36,7 +28,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("5_idle4")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle",
 "speed": 6.0
 }, {
@@ -59,7 +51,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("14_run6")
 }],
-"loop": true,
+"loop": 1,
 "name": &"run",
 "speed": 6.0
 }]
@@ -67,31 +59,40 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="Rect_player"]
 size = Vector2(18, 30)
 
-[node name="Player" type="CharacterBody2D" groups=["player"]]
+[sub_resource type="ParticleProcessMaterial" id="Particles_brilho"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 30.0
+initial_velocity_max = 60.0
+gravity = Vector3(0, 98, 0)
+scale_min = 0.8
+scale_max = 1.4
+
+[node name="Player" type="CharacterBody2D" unique_id=586769704 groups=["player"]]
 script = ExtResource("1_scr")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=366736551]
 sprite_frames = SubResource("SpriteFrames_player")
 animation = &"idle"
 autoplay = "idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=737765300]
 position = Vector2(0, 1)
 shape = SubResource("Rect_player")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1991894894]
 limit_left = 0
 limit_top = 0
-limit_right = 1280
+limit_right = 3000
 limit_bottom = 272
 position_smoothing_enabled = true
 position_smoothing_speed = 8.0
 
-[node name="Particulas" type="GPUParticles2D" parent="."]
+[node name="Particulas" type="GPUParticles2D" parent="." unique_id=802968723]
 emitting = false
 amount = 10
-process_material = SubResource("Particles_brilho")
 texture = ExtResource("8_fx")
 lifetime = 0.4
 one_shot = true
 explosiveness = 1.0
+process_material = SubResource("Particles_brilho")
