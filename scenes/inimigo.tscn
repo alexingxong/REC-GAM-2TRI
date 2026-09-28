@@ -1,4 +1,4 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://coi65wyc1fxtv"]
 
 [ext_resource type="Script" uid="uid://lj4w6ci2qbhk" path="res://scripts/inimigo.gd" id="1_scr"]
 [ext_resource type="Texture2D" uid="uid://5hjvmlpv0xcn" path="res://artes/Personagem e Inimigos/Inimigo Original/opossum/opossum-1.png" id="2_o1"]
@@ -29,7 +29,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("7_o6")
 }],
-"loop": true,
+"loop": 1,
 "name": &"walk",
 "speed": 8.0
 }]
@@ -38,31 +38,32 @@ animations = [{
 size = Vector2(24, 22)
 
 [sub_resource type="RectangleShape2D" id="Rect_hitbox"]
-size = Vector2(30, 26)
+size = Vector2(28, 20)
 
-[node name="Inimigo" type="CharacterBody2D"]
+[node name="Inimigo" type="CharacterBody2D" unique_id=139780763]
 script = ExtResource("1_scr")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1206812817]
 sprite_frames = SubResource("SpriteFrames_inimigo")
 animation = &"walk"
 autoplay = "walk"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=688022410]
 position = Vector2(0, 4)
 shape = SubResource("Rect_corpo")
 
-[node name="RayRight" type="RayCast2D" parent="."]
+[node name="RayRight" type="RayCast2D" parent="." unique_id=134694190]
 position = Vector2(0, 4)
 target_position = Vector2(20, 0)
 
-[node name="RayLeft" type="RayCast2D" parent="."]
+[node name="RayLeft" type="RayCast2D" parent="." unique_id=1624948169]
 position = Vector2(0, 4)
-target_position = Vector2(20, 0)
+target_position = Vector2(-20, 0)
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." unique_id=2104322582]
 
-[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox"]
+[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox" unique_id=232260848]
+position = Vector2(0, 5)
 shape = SubResource("Rect_hitbox")
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

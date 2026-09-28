@@ -1,4 +1,4 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://dpmjikj1kt488"]
 
 [ext_resource type="Script" uid="uid://coqd0v8funs5t" path="res://scripts/placa.gd" id="1_scr"]
 [ext_resource type="Texture2D" uid="uid://dopf1b0186smr" path="res://artes/Ambiente/Decorativos/sign.png" id="2_sign"]
@@ -6,16 +6,16 @@
 [sub_resource type="RectangleShape2D" id="Rect_placa"]
 size = Vector2(44, 40)
 
-[node name="Placa" type="Area2D"]
+[node name="Placa" type="Area2D" unique_id=284167808]
 script = ExtResource("1_scr")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=275348651]
 texture = ExtResource("2_sign")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1797096224]
 shape = SubResource("Rect_placa")
 
-[node name="Mensagem" type="Label" parent="."]
+[node name="Mensagem" type="Label" parent="." unique_id=1460885062]
 offset_left = -56.0
 offset_top = -46.0
 offset_right = 56.0

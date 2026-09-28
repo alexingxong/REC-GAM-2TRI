@@ -1,3 +1,10 @@
-res://scenes/level.tscn
-res://resources/ground_tileset.tres
 res://scenes/player.tscn
+res://resources/ground_tileset.tres
+res://scenes/gema.tscn
+res://scripts/gema.gd
+res://scenes/inimigo.tscn
+res://scenes/placa.tscn
+res://scripts/placa.gd
+res://scenes/inimigo2.tscn
+res://scripts/inimigo2.gd
+res://scenes/level.tscn

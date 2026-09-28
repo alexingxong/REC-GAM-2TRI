@@ -6,7 +6,7 @@ extends Area2D
 var gemas_na_fase: int = 4
 
 
-@onready var texto: Label = $Aviso
+@onready var texto: Label = $Mensagem
 
 
 func _on_body_entered(body: Node2D) -> void:

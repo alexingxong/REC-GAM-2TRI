@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://h18avo51u2qp"]
+
+[ext_resource type="Script" uid="uid://cwg87js4q86ta" path="res://scripts/inimigo2.gd" id="1_knsbk"]
+[ext_resource type="Texture2D" uid="uid://5hjvmlpv0xcn" path="res://artes/Personagem e Inimigos/Inimigo Original/opossum/opossum-1.png" id="2_0cnoy"]
+[ext_resource type="Texture2D" uid="uid://nm0yg6jrf6x6" path="res://artes/Personagem e Inimigos/Inimigo Original/opossum/opossum-2.png" id="3_orveg"]
+[ext_resource type="Texture2D" uid="uid://b0pdux11ar5bf" path="res://artes/Personagem e Inimigos/Inimigo Original/opossum/opossum-3.png" id="4_62ofo"]
+[ext_resource type="Texture2D" uid="uid://ox06pnw5rfit" path="res://artes/Personagem e Inimigos/Inimigo Original/opossum/opossum-4.png" id="5_xdl4l"]
+[ext_resource type="Texture2D" uid="uid://xovl35wawoxc" path="res://artes/Personagem e Inimigos/Inimigo Original/opossum/opossum-5.png" id="6_ek7qm"]
+[ext_resource type="Texture2D" uid="uid://c1psj3gf1lodh" path="res://artes/Personagem e Inimigos/Inimigo Original/opossum/opossum-6.png" id="7_bx713"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_inimigo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_0cnoy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_orveg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_62ofo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_xdl4l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ek7qm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_bx713")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="Rect_corpo"]
+size = Vector2(24, 22)
+
+[sub_resource type="RectangleShape2D" id="Rect_hitbox"]
+size = Vector2(28, 20)
+
+[node name="Inimigo" type="CharacterBody2D" unique_id=139780763]
+script = ExtResource("1_knsbk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1206812817]
+sprite_frames = SubResource("SpriteFrames_inimigo")
+animation = &"walk"
+autoplay = "walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=688022410]
+position = Vector2(0, 4)
+shape = SubResource("Rect_corpo")
+
+[node name="RayRight" type="RayCast2D" parent="." unique_id=134694190]
+position = Vector2(0, 4)
+target_position = Vector2(26, -17)
+
+[node name="RayLeft" type="RayCast2D" parent="." unique_id=1624948169]
+position = Vector2(0, 4)
+target_position = Vector2(-26, -17)
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=2104322582]
+
+[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox" unique_id=232260848]
+position = Vector2(0, 5)
+shape = SubResource("Rect_hitbox")
+
+[node name="RayJumpRight" type="RayCast2D" parent="." unique_id=735922678]
+position = Vector2(0, 11)
+exclude_parent = false
+target_position = Vector2(13, 0)
+
+[node name="RayJumpLeft" type="RayCast2D" parent="." unique_id=62504254]
+position = Vector2(0, 11)
+target_position = Vector2(-13, 0)
+
+[node name="RayJumpRightHole" type="RayCast2D" parent="." unique_id=1146558597]
+position = Vector2(0, 10)
+exclude_parent = false
+target_position = Vector2(23, 10)
+
+[node name="RayJumpLeftHole" type="RayCast2D" parent="." unique_id=2070716805]
+position = Vector2(0, 10)
+target_position = Vector2(-23, 10)
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
